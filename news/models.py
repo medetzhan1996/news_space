@@ -24,3 +24,11 @@ class Comment(models.Model):
     pub_date = models.DateTimeField('date publish',auto_now_add=True)
     def __str__(self):
         return str(self.post)
+
+class Team(models.Model):
+    name = models.CharField(max_length=500)
+    title = models.CharField(max_length=500)
+    image = models.ImageField(upload_to='team/')
+    content = models.TextField()
+    def __str__(self):
+        return str(self.name)

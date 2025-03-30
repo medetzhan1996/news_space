@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect,get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.base import TemplateResponseMixin,View
 from django.views.generic import DetailView,ListView
-from .models import Post, Comment,Category
+from .models import Post, Comment,Category,Team
 from .forms import CommentForm
 from django.views import View
 from django.http import Http404
@@ -23,6 +23,19 @@ class AboutView(TemplateResponseMixin,View):
     def get(self,request):
         contact = ''
         return self.render_to_response({'contact':contact})
+
+
+class ShollView(TemplateResponseMixin,View):
+    template_name = 'sholl.html'
+    def get(self,request):
+        contact = ''
+        return self.render_to_response({'contact':contact})
+
+class TeamView(TemplateResponseMixin,View):
+    template_name = 'team.html'
+    def get(self,request):
+        team = Team.objects.all();
+        return self.render_to_response({'team': team})
 
 class ContactView(TemplateResponseMixin,View):
     template_name = 'contact.html'
