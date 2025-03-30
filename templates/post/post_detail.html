@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+<div class="large-12 columns">
+	<div class="page-title">
+		<h1>Угроза безопасности</h1>
+
+		<div class="breadcrumbs">
+			<a href="{% url 'news:HomeView' %}" title="">Главная</a>
+			<a href="{% url 'news:post_list' %}" title="Все угрозы">Угрозы</a>
+			{{post.title}}
+		</div>
+	</div>
+</div>
+
+<div id="main" class="medium-8 large-8 columns">
+	<div class="post full-width threat-detail {% if post.threat_level == 'high' %}high-threat{% elif post.threat_level == 'medium' %}medium-threat{% else %}low-threat{% endif %}">
+		<div class="threat-header">
+			<div class="threat-level-info">
+				<span class="threat-level-badge">{{ post.threat_level|title }}</span>
+				<span class="threat-status">{{ post.status|title }}</span>
+			</div>
+			<div class="threat-meta">
+				<span class="threat-category"><i class="fa fa-tag"></i> {{ post.category }}</span>
+				<span class="threat-date"><i class="fa fa-calendar"></i> {{ post.pub_date }}</span>
+				<span class="threat-author"><i class="fa fa-user"></i> {{ post.author }}</span>
+			</div>
+		</div>
+
+		<img src="{{post.image.url}}" alt="{{ post.title }}">
+
+		<div class="threat-details">
+			<div class="detail-section">
+				<h3>Описание угрозы</h3>
+				<p>{{post.content}}</p>
+			</div>
+
+			<div class="detail-section">
+				<h3>Характеристики</h3>
+				<div class="threat-characteristics">
+					<div class="characteristic-item">
+						<i class="fa fa-exclamation-triangle"></i>
+						<div class="characteristic-info">
+							<span class="label">Влияние</span>
+							<span class="value">{{ post.impact }}</span>
+						</div>
+					</div>
+					<div class="characteristic-item">
+						<i class="fa fa-clock"></i>
+						<div class="characteristic-info">
+							<span class="label">Обнаружено</span>
+							<span class="value">{{ post.detection_date }}</span>
+						</div>
+					</div>
+					<div class="characteristic-item">
+						<i class="fa fa-shield-alt"></i>
+						<div class="characteristic-info">
+							<span class="label">Статус</span>
+							<span class="value">{{ post.status }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="detail-section">
+				<h3>Рекомендации</h3>
+				<div class="recommendations">
+					{{ post.recommendations|safe }}
+				</div>
+			</div>
+		</div>
+
+		<div class="section section-content">
+			<section class="respond-comments">
+				<h2 class="comments-title">Обсуждение</h2>
+
+				<ol class="comments-list">
+					{% for comment in comments %}
+						{% if comment %}
+						<li class="comment">
+							<article>
+								<div class="avatar">
+									<img alt="" src="{% static 'images/security-avatar.png' %}" class="avatar avatar-70 photo" height="70" width="70">
+								</div>
+
+								<div class="comment-body">
+									<div class="comment-meta">
+										<div class="comment-author">
+											<h6>{{ comment.user.username }}</h6>
+										</div>
+										<div class="comment-date">{{ comment.pub_date }}</div>
+										<a class="comment-reply-link" href="#" aria-label="Ответить">Ответить</a>
+									</div>
+
+									<p>{{comment.text}}</p>
+								</div>
+							</article>
+						</li>
+						{% else %}
+							<li class="no-comments">Обсуждений пока нет</li>
+						{% endif %}
+					{% endfor %}
+				</ol>
+			</section>
+
+			<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Добавить комментарий</h3>
+
+				<form action="" method="post" id="commentform" class="comment-form">
+					{% csrf_token %}
+					<p class="comment-form-comment">
+						<textarea cols="30" rows="10" required="" id="comment" name="{{ comment_form.text.name }}" placeholder="Ваше сообщение *"></textarea>
+					</p>
+
+					<p class="form-submit">
+						<input name="submit" type="submit" id="submit" class="submit" value="Отправить">
+					</p>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<aside id="sidebar" class="medium-4 large-4 columns">
+	{% include 'include/sidebar-area.html' %}
+	
+	<div class="widget widget_related_threats">
+		<h3 class="widget-title">Связанные угрозы</h3>
+		<div class="related-threats-list">
+			{% for related in related_threats %}
+			<div class="related-threat-item">
+				<div class="threat-info">
+					<h4><a href="{% url 'news:post_detail' related.id %}">{{ related.title }}</a></h4>
+					<span class="threat-date">{{ related.pub_date }}</span>
+				</div>
+				<span class="threat-level {{ related.threat_level }}">{{ related.threat_level|title }}</span>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="widget widget_security_actions">
+		<h3 class="widget-title">Действия</h3>
+		<div class="security-actions">
+			<a href="#" class="action-button report-threat">
+				<i class="fa fa-flag"></i>
+				Сообщить об угрозе
+			</a>
+			<a href="#" class="action-button get-help">
+				<i class="fa fa-question-circle"></i>
+				Получить помощь
+			</a>
+		</div>
+	</div>
+
+	<div class="widget widget_security_guidelines">
+		<h3 class="widget-title">Рекомендации по безопасности</h3>
+		<div class="guidelines-list">
+			<div class="guideline-item">
+				<i class="fa fa-lock"></i>
+				<h4>Защита данных</h4>
+				<p>Регулярно обновляйте пароли и используйте двухфакторную аутентификацию</p>
+			</div>
+			<div class="guideline-item">
+				<i class="fa fa-shield-alt"></i>
+				<h4>Безопасность сети</h4>
+				<p>Используйте защищенное соединение и избегайте публичных Wi-Fi сетей</p>
+			</div>
+			<div class="guideline-item">
+				<i class="fa fa-user-shield"></i>
+				<h4>Личная безопасность</h4>
+				<p>Не передавайте учетные данные и не открывайте подозрительные ссылки</p>
+			</div>
+		</div>
+	</div>
+</aside>
+{% endblock %}  

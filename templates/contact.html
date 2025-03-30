@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="large-12 columns">
+    <div class="page-title">
+        <h1>Контакты службы безопасности</h1>
+
+        <div class="breadcrumbs">
+            <a href="{% url 'news:HomeView' %}" title="">Главная</a> / Контакты
+        </div>
+    </div>
+</div>
+
+<div id="main" class="medium-8 large-8 columns">
+    <div class="security-contact-info">
+        <div class="contact-section">
+            <h3>Отдел информационной безопасности</h3>
+            <div class="contact-details">
+                <p><i class="fa fa-building"></i> Адрес: ул. Примерная, 123, г. Алматы</p>
+                <p><i class="fa fa-phone"></i> Телефон: +7 (727) 123-45-67</p>
+                <p><i class="fa fa-envelope"></i> Email: security@muit.kz</p>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h3>Экстренные контакты</h3>
+            <div class="emergency-contacts">
+                <div class="emergency-item">
+                    <i class="fa fa-phone-square"></i>
+                    <div class="emergency-info">
+                        <h4>Круглосуточная служба безопасности</h4>
+                        <p>+7 (727) 123-45-68</p>
+                    </div>
+                </div>
+                <div class="emergency-item">
+                    <i class="fa fa-shield"></i>
+                    <div class="emergency-info">
+                        <h4>Отдел защиты информации</h4>
+                        <p>+7 (727) 123-45-69</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h3>Форма обратной связи</h3>
+            <form class="security-contact-form">
+                <div class="form-group">
+                    <label>Ваше имя</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Тема</label>
+                    <select class="form-control" required>
+                        <option value="">Выберите тему</option>
+                        <option value="threat">Сообщение об угрозе</option>
+                        <option value="incident">Сообщение об инциденте</option>
+                        <option value="question">Вопрос по безопасности</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Сообщение</label>
+                    <textarea class="form-control" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить сообщение</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<aside id="sidebar" class="medium-4 large-4 columns">
+    {% include 'include/sidebar-area.html' %}
+    
+    <div class="widget widget_security_guidelines">
+        <h3 class="widget-title">Правила безопасности</h3>
+        <div class="guidelines-list">
+            <div class="guideline-item">
+                <i class="fa fa-lock"></i>
+                <h4>Парольная политика</h4>
+                <p>Минимум 8 символов, включая цифры и специальные символы</p>
+            </div>
+            <div class="guideline-item">
+                <i class="fa fa-shield"></i>
+                <h4>Двухфакторная аутентификация</h4>
+                <p>Рекомендуется для всех пользователей</p>
+            </div>
+            <div class="guideline-item">
+                <i class="fa fa-user-secret"></i>
+                <h4>Конфиденциальность</h4>
+                <p>Не передавайте учетные данные третьим лицам</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="widget widget_security_news">
+        <h3 class="widget-title">Последние обновления безопасности</h3>
+        <div class="security-news-list">
+            <div class="news-item">
+                <span class="date">15.03.2024</span>
+                <h4>Обновление системы безопасности</h4>
+                <p>Внедрены новые механизмы защиты от угроз</p>
+            </div>
+            <div class="news-item">
+                <span class="date">10.03.2024</span>
+                <h4>Обучение персонала</h4>
+                <p>Проведены тренинги по информационной безопасности</p>
+            </div>
+        </div>
+    </div>
+</aside>
+{% endblock %}  

@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ video.title }} - Обучение по безопасности{% endblock %}
+{% block content %}
+<style>
+	 .mag-posts-area{
+        display:  block !important;
+    }
+    .security-video-container {
+        background: #f8f9fa;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .video-meta {
+        padding: 20px;
+        background: #fff;
+        border-top: 1px solid #eee;
+    }
+    .security-category {
+        display: inline-block;
+        padding: 5px 10px;
+        background: #e9ecef;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+    .security-tags {
+        margin-top: 15px;
+    }
+    .security-tag {
+        display: inline-block;
+        padding: 3px 8px;
+        background: #f1f3f5;
+        border-radius: 3px;
+        margin-right: 5px;
+        font-size: 0.9em;
+    }
+</style>
+<div class="mag-breadcrumb py-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="{% url 'news:HomeView' %}"><i class="fa fa-home" aria-hidden="true"></i> Главная</a></li>
+						<li class="breadcrumb-item"><a href="#">Обучающие материалы</a></li>
+						<li class="breadcrumb-item active" aria-current="page">{{ video.title }}</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+
+<section class="post-details-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="security-video-container mb-30 box-shadow">
+					<iframe src="{{ video.src }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; aspect-ratio: 16/9;"></iframe>
+
+					<div class="video-meta p-4">
+						<div class="security-category">
+							<i class="fa fa-shield-alt"></i>
+							{{ video.category|default:"Информационная безопасность" }}
+						</div>
+						
+						<h2 class="video-title mb-3">{{ video.title }}</h2>
+						
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="video-stats">
+								<span class="mr-3">
+									<i class="fa fa-eye"></i> {{ video.views }} просмотров
+								</span>
+								<span class="mr-3">
+									<i class="fa fa-clock"></i> {{ video.duration|default:"10:00" }}
+								</span>
+								<span>
+									<i class="fa fa-calendar"></i> {{ video.pub_date|date:"d.m.Y" }}
+								</span>
+							</div>
+							
+							<div class="video-actions">
+								<button class="btn btn-outline-primary btn-sm">
+									<i class="fa fa-share"></i> Поделиться
+								</button>
+								<button class="btn btn-outline-success btn-sm ml-2">
+									<i class="fa fa-download"></i> Скачать материалы
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+
+			<div class="col-md-12 col-xl-12">
+				<div class="post-details-content bg-white mb-30 p-30 box-shadow">
+					<div class="blog-content">
+						<div class="content-section mb-4">
+							<h4>Описание</h4>
+							<p>{{ video.content }}</p>
+						</div>
+
+						{% if video.key_points %}
+						<div class="content-section mb-4">
+							<h4>Ключевые моменты</h4>
+							<ul class="key-points-list">
+								{% for point in video.key_points %}
+								<li>{{ point }}</li>
+								{% endfor %}
+							</ul>
+						</div>
+						{% endif %}
+
+						<div class="security-tags">
+							<h4>Теги</h4>
+							<div class="mt-2">
+								{% for tag in video.tags|default:"безопасность,обучение,информация"|split:"," %}
+								<span class="security-tag">
+									<i class="fa fa-tag"></i> {{ tag }}
+								</span>
+								{% endfor %}
+							</div>
+						</div>
+
+						{% if video.resources %}
+						<div class="additional-resources mt-4">
+							<h4>Дополнительные материалы</h4>
+							<ul class="resources-list">
+								{% for resource in video.resources %}
+								<li>
+									<i class="fa fa-file-pdf"></i>
+									<a href="{{ resource.url }}">{{ resource.title }}</a>
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% if related_videos %}
+<div class="related-videos bg-white mb-30 p-30 box-shadow">
+	<h4>Похожие видео</h4>
+	<div class="row">
+		{% for video in related_videos %}
+		<div class="col-md-4">
+			<div class="related-video-item">
+				<div class="video-thumbnail">
+					<img src="{{ video.thumbnail }}" alt="{{ video.title }}">
+					<span class="duration">{{ video.duration }}</span>
+				</div>
+				<h5><a href="{% url 'news_and_video:video_detail' video.id %}">{{ video.title }}</a></h5>
+				<div class="video-meta">
+					<span><i class="fa fa-eye"></i> {{ video.views }}</span>
+					<span><i class="fa fa-calendar"></i> {{ video.pub_date|date:"d.m.Y" }}</span>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endif %}
+
+{% endblock %}  

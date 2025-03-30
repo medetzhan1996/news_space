@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}О системе безопасности{% endblock %}
+{% block content %}
+<div class="large-12 columns">
+    <div class="page-title">
+        <h1>О системе безопасности АО МУИТ</h1>
+
+        <div class="breadcrumbs">
+            <a href="{% url 'news:HomeView' %}" title="">Главная</a> / О системе безопасности
+        </div>
+    </div>
+</div>
+
+<div id="main" class="medium-8 large-8 columns">
+    <div class="security-system-overview">
+        <h2>Обзор системы безопасности</h2>
+        <img class="alignleft" width="350" height="300" alt="Система безопасности" src="{% static 'images/security-system.png' %}">
+        <p>
+            <b>Система безопасности АО МУИТ</b> представляет собой комплексное решение для защиты информационной инфраструктуры университета. Наша система обеспечивает:
+        </p>
+        <ul class="list">
+            <li>• Мониторинг и обнаружение угроз в реальном времени</li>
+            <li>• Защиту от кибератак и вредоносного ПО</li>
+            <li>• Контроль доступа к информационным ресурсам</li>
+            <li>• Аудит безопасности и анализ инцидентов</li>
+            <li>• Обучение персонала по информационной безопасности</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="security-features">
+        <h3>Ключевые компоненты системы</h3>
+        <ul class="accordion">
+            <li class="accordion-navigation">
+                <a href="#" class="acc-trigger">Система обнаружения вторжений (IDS)</a>
+                <div class="content">
+                    <p>Наша IDS система обеспечивает:</p>
+                    <ul>
+                        <li>• Мониторинг сетевого трафика</li>
+                        <li>• Обнаружение подозрительной активности</li>
+                        <li>• Автоматическое оповещение о потенциальных угрозах</li>
+                        <li>• Анализ паттернов атак</li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="accordion-navigation">
+                <a href="#" class="acc-trigger">Система предотвращения вторжений (IPS)</a>
+                <div class="content">
+                    <p>IPS система обеспечивает:</p>
+                    <ul>
+                        <li>• Блокировку вредоносного трафика</li>
+                        <li>• Защиту от DDoS-атак</li>
+                        <li>• Контроль доступа к сетевым ресурсам</li>
+                        <li>• Автоматическое обновление правил безопасности</li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="accordion-navigation">
+                <a href="#" class="acc-trigger">Система управления доступом (IAM)</a>
+                <div class="content">
+                    <p>IAM система обеспечивает:</p>
+                    <ul>
+                        <li>• Централизованное управление учетными записями</li>
+                        <li>• Двухфакторную аутентификацию</li>
+                        <li>• Контроль прав доступа</li>
+                        <li>• Аудит действий пользователей</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="security-stats">
+        <h3>Статистика безопасности</h3>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <i class="fa fa-shield"></i>
+                <h4>Уровень защиты</h4>
+                <p>98%</p>
+            </div>
+            <div class="stat-item">
+                <i class="fa fa-bug-slash"></i>
+                <h4>Блокировано угроз</h4>
+                <p>1,234</p>
+            </div>
+            <div class="stat-item">
+                <i class="fa fa-user-shield"></i>
+                <h4>Защищено пользователей</h4>
+                <p>5,000+</p>
+            </div>
+            <div class="stat-item">
+                <i class="fa fa-clock"></i>
+                <h4>Время реакции</h4>
+                <p>< 5 мин</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<aside id="sidebar" class="medium-4 large-4 columns">
+    {% include 'include/sidebar-area.html' %}
+    
+    <div class="widget widget_security_updates">
+        <h3 class="widget-title">Последние обновления</h3>
+        <div class="updates-list">
+            <div class="update-item">
+                <span class="date">20.03.2024</span>
+                <h4>Обновление системы IDS</h4>
+                <p>Внедрены новые алгоритмы обнаружения угроз</p>
+            </div>
+            <div class="update-item">
+                <span class="date">15.03.2024</span>
+                <h4>Улучшение IPS</h4>
+                <p>Добавлены новые правила фильтрации</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="widget widget_security_team">
+        <h3 class="widget-title">Команда безопасности</h3>
+        <div class="team-list">
+            <div class="team-member">
+                <img src="{% static 'images/security-team-1.jpg' %}" alt="Сотрудник">
+                <h4>Александр Петров</h4>
+                <p>Руководитель отдела безопасности</p>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/security-team-2.jpg' %}" alt="Сотрудник">
+                <h4>Мария Иванова</h4>
+                <p>Специалист по анализу угроз</p>
+            </div>
+        </div>
+    </div>
+</aside>
+{% endblock %}  

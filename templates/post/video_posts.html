@@ -1,0 +1,23 @@
+<div class="single-sidebar-widget p-30">
+	<div class="section-heading">
+		<h5>Обучающие видео по безопасности</h5>
+	</div>
+	{% for video in videos %}
+	<div class="single-blog-post security-video">
+		<div class="video-container">
+			<iframe style="width:100%" src="{{video.src}}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+		<div class="video-info">
+			<div class="video-category">
+				<i class="fa fa-shield-alt"></i>
+				<span>{{ video.category|default:"Безопасность" }}</span>
+			</div>
+			<a href="{% url 'news_and_video:video_detail' video.id %}" class="post-title">{{video.title}}</a>
+			<div class="post-meta d-flex justify-content-between">
+				<span><i class="fa fa-clock"></i> {{ video.duration }}</span>
+				<span><i class="fa fa-eye" aria-hidden="true"></i> {{video.views}}</span>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
