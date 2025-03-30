@@ -1,18 +1,18 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 	<!-- Basic Page Needs
 	  ================================================== -->
 	<meta charset="utf-8"/>
-	<title>Система безопасности АО МУИТ</title>
-	<meta name="description" content="Система идентификации угроз информационной безопасности">
-	<meta name="author" content="АО МУИТ">
+	<title>Алматы облысы білім басқармасының Алатау қаласы бойынша білім бөлімі " мемлекеттік мекемесінің "№3 жалпы білім беретін орта мектебі " коммуналдық мемлекеттік мекемесі</title>
+	<meta name="description" content="Diplomat - Responsive Political HTML5 Template">
+	<meta name="author" content="ThemeMakers">
 
 	<!-- Mobile Specific Metas
 	================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon"/>
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
 
 	<!-- Google Web Fonts
 	================================================== -->
@@ -118,10 +118,7 @@
 						<div class="logo">
 							<span class="tmm_logo">
 
-								<a title="Система безопасности АО МУИТ" href="" style="font-size: 20px;">
-									<img style="width:120px" src="{% static 'images/logo.png' %}" alt="">
-									<b>Система безопасности АО МУИТ</b>
-								</a>
+								<a title="Political HTML5 Theme" href="" style="font-size: 20px;"><img style="width:120px" src="{% static 'images/logo.png' %}" alt="">№3 жалпы білім беретін <b>орта мектебі</b></a>
 							</span>
 						</div>
 
@@ -131,11 +128,11 @@
 								    	<span style="display: block;">
 								    		<i class="fa fa-sign-out" aria-hidden="true"></i>{{user}}
 								    	</span>
-								    	<span style="font-size:11px;color: red;display: block;">Выйти</span></a>
+								    	<span style="font-size:11px;color: red;display: block;">Жүйеден шығу</span></a>
 							{% else %}
 							<ul>
-								<li data-login="loginDialog" class="lock"><a href="{% url 'account:login' %}">Вход</a></li>
-								<li data-account="accountDialog" class="user"><a href="{% url 'account:login' %}">Регистрация</a></li>
+								<li data-login="loginDialog" class="lock"><a href="{% url 'account:login' %}">Кіру</a></li>
+								<li data-account="accountDialog" class="user"><a href="{% url 'account:login' %}">Тіркелу</a></li>
 							</ul>
 							{% endif %}
 
@@ -163,19 +160,19 @@
 
 							<ul id="menu-primary-menu" class="menu">
 								
-								<li class="current_page_item"><a href="{% url 'news:HomeView' %}">Главная</a></li>
-								<li><a href="{% url 'news:post_list' %}">Угрозы</a></li>
-								<li><a href="contact.html">Инциденты</a></li>
-								<li><a href="contact.html">Отчеты</a></li>
-								<li><a href="{% url 'news:contact_view' %}">Контакты</a></li>
+								<li class="current_page_item"><a href="{% url 'news:HomeView' %}">Басты бет</a></li>
+								<li><a href="{% url 'news:post_list' %}">Жаңалықтар</a></li>
+								<li><a href="{% url 'news:sholl_view' %}">Мектеп туралы</a></li>
+								<li><a href="{% url 'news:team_view' %}">Біздің ұжым</a></li>
+								<li><a href="{% url 'news:contact_view' %}">Байланыс</a></li>
 							</ul>
 						</div>
 						<div class="search-form-nav">
 							<form method="get" action="home.html#">
 								<fieldset>
-									<input placeholder="Поиск" type="text" name="s" autocomplete="off" value=""
+									<input placeholder="Search" type="text" name="s" autocomplete="off" value=""
 										   class="advanced_search"/>
-									<button type="submit" class="submit-search">Поиск</button>
+									<button type="submit" class="submit-search">Search</button>
 								</fieldset>
 							</form>
 						</div>
@@ -223,7 +220,7 @@
 				<div class="large-12 columns">
 
 					<div id="text-2" class="widget widget_text">
-						<h3 class="widget-title">Система безопасности АО МУИТ</h3>
+						<h3 class="widget-title">"Алматы облысы білім басқармасының Алатау қаласы бойынша білім бөлімі " мемлекеттік мекемесінің "№3 жалпы білім беретін орта мектебі " коммуналдық мемлекеттік мекемесі</h3>
 
 
 					</div>
@@ -243,7 +240,7 @@
 
 				<div class="large-12 columns" style="text-align: center;">
 					<div class="copyright">
-						© 2024 АО МУИТ. Все права защищены
+						Авторлық құқық © 2025. Барлық құқықтар қорғалған
 					</div>
 				</div>
 

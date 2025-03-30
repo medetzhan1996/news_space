@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}{% block title %}Біз жайлы{% endblock %}
+{% block content %}
+<div class="large-12 columns">
+    <div class="page-title">
+        <h1>Мектеп туралы</h1>
+
+        <div class="breadcrumbs">
+            <a href="{% url 'news:HomeView' %}" title="">Басты бет</a>             Директор блогы
+        </div>
+        <!--/ .breadcrumbs-->
+    </div>
+</div>
+<div id="main" class="medium-8 large-8 columns">
+    <img src="{% static 'images/2137937753-01.jpg' %}" class="ls-bg" alt="slide-1"/ style="height:500px; width: 100%;">
+    <div class="divider-1"></div>
+    <div class="section">
+        <h3>МЕКТЕПТІҢ ПАСПОРТЫ</h3>
+         <img src="{% static 'images/мектеп.png' %}" class="ls-bg" style="width: 100%;">
+    </div>
+
+</div>
+<aside id="sidebar" class="medium-4 large-4 columns">
+    {% include 'include/sidebar-area.html' %}
+    
+    <!--/ .widget_upcoming_events-->
+
+
+    <div class="widget widget_events_calendar">
+        <h3 class="widget-title">Ауа райы</h3>
+        {% include 'include/pogoda.html' %}
+    </div>
+</aside>
+
+
+
+{% endblock %}  

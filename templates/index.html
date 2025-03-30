@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="section padding-off columns medium-12 large-12 background-color-off">
-	<img src="{% static 'images/security-banner.jpg' %}" class="ls-bg" alt="security-banner" style="height:500px; width: 100%;">
+	<img src="{% static 'images/2137937753-01.jpg' %}" class="ls-bg" alt="slide-1"/ style="height:500px; width: 100%;">
 </div>
 
 <div class="medium-12 large-12 columns">
@@ -10,20 +10,20 @@
 	<ul class="block-with-icons">
 		<li>
 			<a href="">
-				<i class="fa fa-shield"></i>
-				<h5>Активные угрозы</h5>
+				<i class="">50</i>
+				<h5>Кабинет</h5>
 			</a>
 		</li>
 		<li>
 			<a href="">
-				<i class="fa fa-exclamation-triangle"></i>
-				<h5>Инциденты</h5>
+				<i class="">182</i>
+				<h5>Мұғалімдер</h5>
 			</a>
 		</li>
 		<li>
 			<a href="">
-				<i class="fa fa-chart-line"></i>
-				<h5>Статистика</h5>
+				<i class="">1500</i>
+				<h5>Оқушылар</h5>
 			</a>
 		</li>
 	</ul>
@@ -37,7 +37,7 @@
 		<div class="row">
 
 			<div class="relative">
-				<h2 class="section-title">Последние угрозы безопасности</h2>
+				<h2 class="section-title">Соңғы жаңалықтар</h2>
 
 				<div class="row post-list two-cols">
 
@@ -53,12 +53,7 @@
 								</a>
 
 								<header class="entry-header">
-									<h3 class="entry-title">
-										<a href="">{{post.title}}</a>
-										<span class="threat-level {% if post.threat_level == 'high' %}high{% elif post.threat_level == 'medium' %}medium{% else %}low{% endif %}">
-											{{ post.threat_level|title }}
-										</span>
-									</h3>
+									<h3 class="entry-title"><a href="">{{post.title}}</a></h3>
 								</header>
 
 							</div>
@@ -73,7 +68,7 @@
 
 								<div class="left">
 									<span class="cat-links">
-										<a href="{% url 'news:post_detail' post.id %}" rel="category tag">Подробнее</a>
+										<a href="{% url 'news:post_detail' post.id %}" rel="category tag">Толығырақ</a>
 									</span>
 								</div>
 
@@ -114,38 +109,9 @@
 	<!--/ .widget_upcoming_events-->
 
 
-	<div class="widget widget_security_stats">
-		<h3 class="widget-title">Статистика безопасности</h3>
-		<div class="security-stats">
-			<div class="stat-item">
-				<span class="stat-label">Уровень защиты</span>
-				<div class="progress-bar">
-					<div class="progress" style="width: 85%"></div>
-				</div>
-			</div>
-			<div class="stat-item">
-				<span class="stat-label">Активные угрозы</span>
-				<span class="stat-value high">3</span>
-			</div>
-			<div class="stat-item">
-				<span class="stat-label">Обработанные инциденты</span>
-				<span class="stat-value">12</span>
-			</div>
-		</div>
-	</div>
-
-	<div class="widget widget_security_alerts">
-		<h3 class="widget-title">Срочные оповещения</h3>
-		<div class="alert-list">
-			<div class="alert-item high">
-				<i class="fa fa-exclamation-circle"></i>
-				<span>Обнаружена попытка несанкционированного доступа</span>
-			</div>
-			<div class="alert-item medium">
-				<i class="fa fa-exclamation-triangle"></i>
-				<span>Подозрительная активность в сети</span>
-			</div>
-		</div>
+	<div class="widget widget_events_calendar">
+		<h3 class="widget-title">Ауа райы</h3>
+		{% include 'include/pogoda.html' %}
 	</div>
 </aside>
 
